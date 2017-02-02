@@ -486,14 +486,19 @@ func GenerateFile(config Config, containers Context) bool {
 		filteredContainers = filteredRunningContainers
 	}
 
-	t := *filteredContainers[0]
-	s := reflect.ValueOf(&t).Elem()
-	typeOfT := s.Type();
 
-	for i := 0; i < s.NumField(); i++ {
-		f := s.Field(i)
-		fmt.Printf("%d: %s %s = %v\n", i,
-			typeOfT.Field(i).Name, f.Type(), f.Interface())
+	for index, element := range filteredContainers {
+		log.Printf("SHOWING FilteredContainer: %s \n ------------------------- \n", index)
+
+		t := *element
+		s := reflect.ValueOf(&t).Elem()
+		typeOfT := s.Type();
+
+		for i := 0; i < s.NumField(); i++ {
+			f := s.Field(i)
+			fmt.Printf("%d: %s %s = %v\n", i,
+				typeOfT.Field(i).Name, f.Type(), f.Interface())
+		}
 	}
 
 	contents := executeTemplate(config.Template, filteredContainers)
