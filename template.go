@@ -485,7 +485,7 @@ func GenerateFile(config Config, containers Context) bool {
 	} else {
 		filteredContainers = filteredRunningContainers
 	}
-/*
+
 	t := filteredContainers
 	s := reflect.ValueOf(&t).Elem()
 	typeOfT := s.Type();
@@ -494,7 +494,7 @@ func GenerateFile(config Config, containers Context) bool {
 		f := s.Field(i)
 		fmt.Printf("%d: %s %s = %v\n", i,
 			typeOfT.Field(i).Name, f.Type(), f.Interface())
-	}*/
+	}
 
 	contents := executeTemplate(config.Template, filteredContainers)
 
