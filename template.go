@@ -486,7 +486,7 @@ func GenerateFile(config Config, containers Context) bool {
 		filteredContainers = filteredRunningContainers
 	}
 
-	t := filteredContainers
+	t := filteredContainers[0]
 	s := reflect.ValueOf(&t).Elem()
 	typeOfT := s.Type();
 
