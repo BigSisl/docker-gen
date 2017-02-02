@@ -247,8 +247,6 @@ func (g *generator) generateFromEvents() {
 					watching = true
 					log.Println("Watching docker events")
 
-					log.Println("Testing code change")
-					
 					// sync all configs after resuming listener
 					g.generateFromContainers()
 				}
